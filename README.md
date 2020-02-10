@@ -54,7 +54,7 @@ Am besten führst du diese Anleitung auch gleich über ein offenes WLAN durch.
 Die Angular CLI ist das offizielle Build-Tool für Angular. Mit folgendem Befehl kannst Du die CLI installieren:
 
 ```
-npm install -g @angular/cli@next
+npm install -g @angular/cli
 ```
 
 ⚠️ Überprüfe bitte anschließend die Versionen, damit wir beim Workshop alle auf dem gleichen Stand sind.
@@ -66,7 +66,7 @@ npm -v
 > Erwartet: 6.x oder höher
 
 ng version
-> Erwartet: 9.0.0-rc.12 oder höher
+> Erwartet: 9.0.0 oder höher
 ```
 
 
@@ -124,4 +124,4 @@ Bei Fragen wende dich einfach direkt an das Angular-Schule-Team:
 
 <img src="http://assets.angular.schule/logo-angular-schule.png" height="60">
 
-### &copy; 2020 https://angular.schule | Stand: 04.02.2020
+### &copy; 2020 https://angular.schule | Stand: 10.02.2020
