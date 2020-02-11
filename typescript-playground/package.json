@@ -1,0 +1,22 @@
+{
+  "name": "2020-02-angular-workshop-heidelberg",
+  "version": "1.0.0",
+  "description": "<img src=\"http://assets.angular.schule/logo-angular-schulung-heidelberg-2019-03.png\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular-schule/2020-02-angular-workshop-heidelberg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angular-schule/2020-02-angular-workshop-heidelberg/issues"
+  },
+  "homepage": "https://github.com/angular-schule/2020-02-angular-workshop-heidelberg#readme",
+  "dependencies": {
+    "typescript": "^3.7.5"
+  }
+}
