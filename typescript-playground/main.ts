@@ -1,1 +1,3 @@
-console.log('Hallo Welt! 😃')
+import { Test } from "./test";
+
+const test = new Test(42);
