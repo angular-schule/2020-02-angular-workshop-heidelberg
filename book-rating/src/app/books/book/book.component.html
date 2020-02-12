@@ -13,10 +13,8 @@
       {{ book.description }}
     </p>
 
-    <!-- auweia! logik im html und mutiert! 😱 -->
-
-    <button (click)="book.rating = book.rating - 1" class="btn btn-secondary mr-2">-</button>
-    <button (click)="book.rating = book.rating + 1" class="btn btn-primary mr-2">+</button>
+    <button (click)="doRateDown()" class="btn btn-secondary mr-2">-</button>
+    <button (click)="doRateUp()" class="btn btn-primary mr-2">+</button>
 
   </div>
 </div>
