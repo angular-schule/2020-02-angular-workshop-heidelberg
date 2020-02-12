@@ -9,4 +9,8 @@ import { Book } from '../shared/book';
 export class BookComponent {
 
   @Input() book: Book;
+
+  get stars() {
+    return new Array(this.book.rating);
+  }
 }
