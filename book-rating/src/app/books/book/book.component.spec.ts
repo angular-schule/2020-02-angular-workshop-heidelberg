@@ -8,7 +8,7 @@ describe('BookComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookComponent ]
+      declarations: [ BookComponent ] // Unit Test
     })
     .compileComponents();
   }));
@@ -16,6 +16,12 @@ describe('BookComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
+    component.book = {
+      isbn: '000',
+      title: 'Angular',
+      description: '',
+      rating: 1
+    };
     fixture.detectChanges();
   });
 
