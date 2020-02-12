@@ -5,14 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
-import { RepeatDirective } from './shared/repeat.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     BookComponent,
-    RepeatDirective
+    // RepeatDirective
   ],
   imports: [
     BrowserModule,

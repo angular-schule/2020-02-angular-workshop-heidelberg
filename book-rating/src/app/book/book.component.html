@@ -5,7 +5,7 @@
     <div class="card-title">
       <h2>
         {{ book.title }}
-        <span *brRepeat="book.rating"
+        <span *ngFor="let s of stars"
           class="badge badge-secondary">⭐️</span>
       </h2>
     </div>
