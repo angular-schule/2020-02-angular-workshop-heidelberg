@@ -4,9 +4,11 @@
       src="https://api.angular.schule/avatar/{{ book.rating }}">
     <div class="card-title">
       <h2>
-        {{ book.title }}
+        {{ book.title | uppercase }}
         <span *ngFor="let s of stars"
           class="badge badge-secondary">⭐️</span>
+
+         <!-- {{ '⭐️⭐️⭐️⭐️⭐️' | slice:0:book.rating*2 }} -->
       </h2>
     </div>
     <p>
