@@ -21,9 +21,6 @@ describe('DashboardComponent', () => {
   });
 
   it('should create', () => {
-    // component.doRateDown({} as Book);
-    // component.doRateUp({} as Book);
-    // component.update({} as Book);
     expect(component).toBeTruthy();
   });
 });
