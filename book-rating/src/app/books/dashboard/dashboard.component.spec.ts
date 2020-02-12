@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { Book } from '../shared/book';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -20,6 +21,9 @@ describe('DashboardComponent', () => {
   });
 
   it('should create', () => {
+    // component.doRateDown({} as Book);
+    // component.doRateUp({} as Book);
+    // component.update({} as Book);
     expect(component).toBeTruthy();
   });
 });
