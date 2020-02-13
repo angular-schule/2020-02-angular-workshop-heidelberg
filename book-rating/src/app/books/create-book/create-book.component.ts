@@ -27,4 +27,19 @@ export class CreateBookComponent {
     return control.touched && control.hasError(code);
   }
 
+  submitForm() {
+    const newBook = {
+      ...this.bookForm.value,
+      rating: 1
+    };
+
+    // ???
+    // 1. Erstelle einen EventEmitter (Name: create)
+    // 2. "Emitte" das neue Buch
+    // 3. Empfange das neue Buch um Dashboard
+    // 4. Füge das neue Buch dem Array hinzu
+
+    this.bookForm.reset();
+  }
+
 }
