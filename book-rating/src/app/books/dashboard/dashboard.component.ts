@@ -37,17 +37,16 @@ export class DashboardComponent implements OnInit {
   }
 
   doRateDown(book: Book) {
-    // const ratedBook = this.br.rateDown(book);
-    const ratedBook = {
-      ...book,
-      rating: Math.max(--book.rating, 1)
-    };
-
+    const ratedBook = this.br.rateDown(book);
     this.update(ratedBook);
   }
 
   doRateUp(book: Book) {
     const ratedBook = this.br.rateUp(book);
+    // const ratedBook = {
+    //   ...book,
+    //   rating: Math.min(++book.rating, 5)
+    // };
     this.update(ratedBook);
   }
 
