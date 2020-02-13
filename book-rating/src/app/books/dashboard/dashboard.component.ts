@@ -1,39 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookStoreService } from '../shared/book-store.service';
 
 @Component({
   selector: 'br-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  // VORSICHT: gleich Bug bei HTTP
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
 
   books: Book[];
 
-  constructor(private br: BookRatingService) { }
+  constructor(private br: BookRatingService, private bs: BookStoreService) { }
 
   ngOnInit() {
-    this.books = [
-      {
-        isbn: '000',
-        title: 'Angular',
-        description: 'Tolles Buch',
-        rating: 5
-      },
-      {
-        isbn: '111',
-        title: 'AngularJS',
-        description: 'Altes Buch',
-        rating: 3
-      },
-      {
-        isbn: '222',
-        title: 'Python',
-        description: 'Hilfe, ein Leerzeichen zuviel!',
-        rating: 1
-      },
-    ];
+    this.bs.getBooks().subscribe(books => this.books = books);
   }
 
   doRateDown(book: Book) {
