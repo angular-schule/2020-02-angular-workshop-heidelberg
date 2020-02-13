@@ -55,4 +55,8 @@ export class DashboardComponent implements OnInit {
       .map(book => book.isbn === ratedBook.isbn ? ratedBook : book)
       .sort((a, b) => b.rating - a.rating);
   }
+
+  doCreate(book: Book) {
+    this.books = [...this.books, book];
+  }
 }
