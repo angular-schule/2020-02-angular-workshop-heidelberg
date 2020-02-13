@@ -2,10 +2,14 @@
 
   <div class="form-group">
     <label for="isbn">ISBN</label>
-    <input formControlName="isbn" type="text" class="form-control" id="isbn">
+    <input formControlName="isbn" placeholder="z.B. 000-000" type="text" class="form-control" id="isbn">
 
-    <div *ngIf="false" class="feedback-error">
-      Fehler: Bitte geben Sie eine ISBN an!
+    <div *ngIf="isInvalid('isbn')" class="feedback-error">
+      Fehler: Bitte geben Sie eine gültige ISBN an!
+    </div>
+
+    <div *ngIf="hasError('isbn', 'required')" class="feedback-error">
+      Sie müssen ein Zeichen eingeben!
     </div>
   </div>
 
