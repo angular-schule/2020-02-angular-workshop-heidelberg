@@ -30,13 +30,17 @@ export class BookDetailsComponent implements OnInit {
       subscriber.next('😎');
       subscriber.next('😍');
 
-      setTimeout(() => subscriber.next('😇'), 1000);
+      const t = setTimeout(() => { subscriber.next('😇'), console.log('Ist da wer???'); }, 1000);
       setTimeout(() => subscriber.complete(), 2000);
 
-      // subscriber.error('HILFE FEHLER!');
+      return () => {
+        console.log('Da hat jemand unsubscribed!');
+        clearTimeout(t);
+      };
     });
 
-    observable.subscribe(observer);
+    const sub = observable.subscribe(observer);
+    setTimeout(() => sub.unsubscribe(), 500);
 
     // subscripion
     // this.sub = timer(0, 250).subscribe(console.log);
