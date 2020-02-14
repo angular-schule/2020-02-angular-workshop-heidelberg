@@ -2,14 +2,14 @@
   {{ (book$ | async)?.title }}
 </h2>
 
+<h3>{{ (book$ | async)?.isbn }}</h3>
 
-<p>
-  {{ (book$ | async)?.isbn }}
-</p>
-
-<p>
+<p *ngIf="show">
+  Info:
   {{ (book$ | async)?.description }}
 </p>
+
+<button (click)="show = true">Mehr</button>
 
 <a routerLink="/books/9783864902079">
   Gehe zu 9783864902079
