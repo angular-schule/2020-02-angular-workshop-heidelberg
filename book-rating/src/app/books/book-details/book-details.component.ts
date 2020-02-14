@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observer } from 'rxjs';
+import { of, Observer, timer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -10,6 +10,7 @@ import { of, Observer } from 'rxjs';
 export class BookDetailsComponent implements OnInit {
 
   isbn: string;
+  sub: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -27,7 +28,11 @@ export class BookDetailsComponent implements OnInit {
 
     of('😎', '😳', '🤩').subscribe(observer);
 
+    this.sub = timer(0, 250).subscribe(console.log);
+  }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }
