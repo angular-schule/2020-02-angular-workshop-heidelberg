@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { of, Observer } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -19,12 +19,13 @@ export class BookDetailsComponent implements OnInit {
     );
 
     // Los geht's!
+    const observer = {
+      next: s => console.log(s),
+      error: err => console.error(err),
+      complete: () => console.log('COMPLETE!')
+    };
 
-    of('😎', '😳', '🤩').subscribe(
-      s => console.log(s),
-      err => console.error(err),
-      () => console.log('COMPLETE!')
-    );
+    of('😎', '😳', '🤩').subscribe(observer);
 
 
   }
