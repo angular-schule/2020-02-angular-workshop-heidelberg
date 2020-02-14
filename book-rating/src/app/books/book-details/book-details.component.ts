@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of, Observer, timer, Subscription } from 'rxjs';
-import { takeUntil, takeWhile } from 'rxjs/operators';
-
+import { of, Observer, timer, Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -12,8 +10,7 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
 export class BookDetailsComponent implements OnInit {
 
   isbn: string;
-  alive = true;
-
+  sub: Subscription;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -29,21 +26,24 @@ export class BookDetailsComponent implements OnInit {
       complete: () => console.log('COMPLETE!')
     };
 
-    of('😎', '😳', '🤩').subscribe(observer);
+    const observable = new Observable(subscriber => {
+      subscriber.next('😎');
+      subscriber.next('😍');
 
-    timer(0, 250).pipe(
-      takeWhile(() => this.alive)
-    ).subscribe(console.log);
+      setTimeout(() => subscriber.next('😇'), 1000);
+      setTimeout(() => subscriber.complete(), 2000);
 
-    timer(0, 250).pipe(
-      takeWhile(() => this.alive)
-    ).subscribe(console.log);
+      // subscriber.error('HILFE FEHLER!');
+    });
 
+    observable.subscribe(observer);
+
+    // subscripion
+    // this.sub = timer(0, 250).subscribe(console.log);
   }
 
   ngOnDestroy() {
-    this.alive = false;
-
+    this.sub.unsubscribe();
   }
 
 }
