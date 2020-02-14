@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observer, timer, Subscription, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'br-book-details',
@@ -44,6 +46,14 @@ export class BookDetailsComponent implements OnInit {
 
     // subscripion
     // this.sub = timer(0, 250).subscribe(console.log);
+
+    of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
+      map(x => x * 10),
+      // 2. filtere alle Werte aus, die kleine sind als 30 (also 40, 50 usw. sind gültig)
+      // 3. bilde die Summe aus allen Zahlen (einmal)
+      // 4. optional: zeige so viele ❤️ Herzen an, wie die Zahl groß ist
+    ).subscribe(console.log);
+
   }
 
   ngOnDestroy() {
