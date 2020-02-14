@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observer, timer, Subscription, Observable } from 'rxjs';
 import { map, filter, reduce } from 'rxjs/operators';
+import { BookStoreService } from '../shared/book-store.service';
 
 
 @Component({
@@ -9,55 +10,21 @@ import { map, filter, reduce } from 'rxjs/operators';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent {
 
-  isbn: string;
-  sub: Subscription;
+  book$ = this.route.paramMap.pipe(
+    map(paramMap => paramMap.get('isbn'))
+  );
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private bs: BookStoreService) {
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(
-      paramMap => this.isbn = paramMap.get('isbn')
+    this.route.paramMap.pipe(
+      map(paramMap => paramMap.get('isbn')),
+      map(isbn => this.bs.getSingleBook(isbn))
+    ).subscribe(
+      x => x.subscribe(
+        y => console.log(y)
+      )
     );
-
-    // Los geht's!
-    const observer = {
-      next: s => console.log(s),
-      error: err => console.error(err),
-      complete: () => console.log('COMPLETE!')
-    };
-
-    const observable = new Observable(subscriber => {
-      subscriber.next('😎');
-      subscriber.next('😍');
-
-      const t = setTimeout(() => { subscriber.next('😇'), console.log('Ist da wer???'); }, 1000);
-      setTimeout(() => subscriber.complete(), 2000);
-
-      return () => {
-        console.log('Da hat jemand unsubscribed!');
-        clearTimeout(t);
-      };
-    });
-
-    const sub = observable.subscribe(observer);
-    setTimeout(() => sub.unsubscribe(), 500);
-
-    // subscripion
-    // this.sub = timer(0, 250).subscribe(console.log);
-
-    of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
-      map(x => x * 10),
-      filter(x => x > 30),
-      reduce((x, y) => x + y),
-      map(x => '🍞'.repeat(x))
-    ).subscribe(console.log);
-
   }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
 }
