@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observer, timer, Subscription, Observable } from 'rxjs';
-import { map, filter, reduce } from 'rxjs/operators';
+import { map, filter, reduce, mergeMap, concatMap, switchMap } from 'rxjs/operators';
 import { BookStoreService } from '../shared/book-store.service';
 
 
@@ -20,11 +20,7 @@ export class BookDetailsComponent {
 
     this.route.paramMap.pipe(
       map(paramMap => paramMap.get('isbn')),
-      map(isbn => this.bs.getSingleBook(isbn))
-    ).subscribe(
-      x => x.subscribe(
-        y => console.log(y)
-      )
-    );
+      switchMap(isbn => this.bs.getSingleBook(isbn))
+    ).subscribe(y => console.log(y));
   }
 }
