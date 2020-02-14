@@ -18,10 +18,10 @@ export class BookComponent {
   }
 
   doRateDown() {
-    this.rateDown.emit(this.book);
+    this.rateDown.next(this.book);
   }
 
   doRateUp() {
-    this.rateUp.emit(this.book);
+    this.rateUp.next(this.book);
   }
 }
