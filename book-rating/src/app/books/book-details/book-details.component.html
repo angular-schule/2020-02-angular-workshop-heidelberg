@@ -2,7 +2,14 @@
   {{ (book$ | async)?.title }}
 </h2>
 
-<p>book-details works!</p>
+
+<p>
+  {{ (book$ | async)?.isbn }}
+</p>
+
+<p>
+  {{ (book$ | async)?.description }}
+</p>
 
 <a routerLink="/books/9783864902079">
   Gehe zu 9783864902079
