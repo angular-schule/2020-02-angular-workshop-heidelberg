@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observer, timer, Subscription, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter, reduce } from 'rxjs/operators';
 
 
 @Component({
@@ -49,9 +49,9 @@ export class BookDetailsComponent implements OnInit {
 
     of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).pipe(
       map(x => x * 10),
-      // 2. filtere alle Werte aus, die kleine sind als 30 (also 40, 50 usw. sind gültig)
-      // 3. bilde die Summe aus allen Zahlen (einmal)
-      // 4. optional: zeige so viele ❤️ Herzen an, wie die Zahl groß ist
+      filter(x => x > 30),
+      reduce((x, y) => x + y),
+      map(x => '🍞'.repeat(x))
     ).subscribe(console.log);
 
   }
