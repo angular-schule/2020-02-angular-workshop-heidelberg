@@ -1,14 +1,13 @@
 <div class="card mb-4">
   <div class="card-body bg-light">
-    <img class="img-thumbnail float-right"
-      src="https://api.angular.schule/avatar/{{ book.rating }}">
+    <img class="img-thumbnail float-right" width="200"
+      [src]="book.firstThumbnailUrl">
     <div class="card-title">
       <h2>
         {{ book.title | uppercase }}
-        <span *ngFor="let s of stars"
-          class="badge badge-secondary">⭐️</span>
-
-         <!-- {{ '⭐️⭐️⭐️⭐️⭐️' | slice:0:book.rating*2 }} -->
+        <span class="badge badge-secondary">
+          <ng-container *ngFor="let s of stars">⭐️</ng-container>
+        </span>
       </h2>
     </div>
     <p>
@@ -17,6 +16,8 @@
 
     <button (click)="doRateDown()" class="btn btn-secondary mr-2">-</button>
     <button (click)="doRateUp()" class="btn btn-primary mr-2">+</button>
+    <a [routerLink]="['/books', book.isbn]" class="btn btn-primary">Details</a>
+
 
   </div>
 </div>
