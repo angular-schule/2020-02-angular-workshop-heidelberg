@@ -8,10 +8,11 @@ import { BookRatingService } from './shared/book-rating.service';
 import { CreateBookComponent } from './create-book/create-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details.component';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, Store } from '@ngrx/store';
 import * as fromBook from './reducers/book.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { BookEffects } from './effects/book.effects';
+import { loadBooks } from './actions/book.actions';
 
 @NgModule({
   declarations: [
@@ -32,4 +33,8 @@ import { BookEffects } from './effects/book.effects';
   ],
   // providers: [BookRatingService] // alte Syntax
 })
-export class BooksModule { }
+export class BooksModule {
+  constructor(private store: Store<{}>) {
+    // this.store.dispatch(loadBooks());
+  }
+}
